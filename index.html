@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>🍔 Foodie — Interactive Food Ordering</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header card">
+      <div class="brand">
+        <div class="logo">🍽️</div>
+        <div>
+          <div class="title">Foodie — Demo</div>
+          <div class="subtitle">Simulated ordering flow with callbacks</div>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="small">Local demo • Node + Express + MongoDB</div>
+      </div>
+    </header>
+
+    <main class="card grid">
+      <section class="left">
+        <div class="controls">
+          <div class="field">
+            <input id="searchInput" placeholder="Search restaurant (e.g. Burger Palace)" />
+            <button class="btn" id="searchBtn">Search</button>
+          </div>
+
+          <div id="restaurantCard" class="restaurant hide">
+            <h3 id="restName">—</h3>
+            <div id="restMenu" class="menu"></div>
+            <div class="field small">
+              <input id="orderItem" placeholder="Type exact menu item to order" />
+              <button class="btn secondary" id="orderBtn">Place Order</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <button class="btn" id="payBtn">Pay Now</button>
+            <button class="btn secondary" id="deliverBtn">Confirm Delivery</button>
+            <label class="checkbox">
+              <input type="checkbox" id="forceFail"> Force Payment Fail
+            </label>
+          </div>
+
+        </div>
+
+        <div class="tracker card" id="tracker">
+          <div class="tracker-title">Order Tracker</div>
+          <ol id="steps">
+            <li id="step-search" class="pending">Search restaurant</li>
+            <li id="step-order" class="pending">Place order</li>
+            <li id="step-payment" class="pending">Process payment</li>
+            <li id="step-delivery" class="pending">Confirm delivery</li>
+          </ol>
+        </div>
+      </section>
+
+      <aside class="right">
+        <div class="card status" id="statusCard">
+          <div class="status-title">Status</div>
+          <div id="statusText">Idle — start by searching a restaurant</div>
+        </div>
+
+        <div class="card receipt hide" id="receipt">
+          <div class="status-title">Receipt</div>
+          <pre id="receiptContent">-</pre>
+        </div>
+
+        <div class="card help">
+          <div class="status-title">How it works</div>
+          <ul>
+            <li>Step-by-step callback flow — each step triggers the next only on success.</li>
+            <li>Backend endpoints simulate delay & occasional failures.</li>
+            <li>Use "Force Payment Fail" to test error handling.</li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="foot">
+      <small>Made for demo — copy the files, run the backend, open this HTML.</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
